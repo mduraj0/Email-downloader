@@ -85,7 +85,7 @@ class Filter:
 
 
 @click.command()
-@click.option('--uploads-to', type=click.Path(), default='zalaczniki')
+@click.option('--uploads-to', type=click.Path(), default='Your directory')
 @click.option('--search', help='Patter no search in ...')
 @click.option('--search-in-content', is_flag=True, help='Should I check content?')
 @click.option('--search-in-attachment-name', is_flag=True, help='Should I check attachment name?')
