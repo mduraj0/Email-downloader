@@ -67,7 +67,6 @@ class Filter:
         return True if re.search(self.pattern, part.as_string(), re.IGNORECASE) else False
 
     def _search_in_attachment_name(self, part):
-
         return part.get_filename() is not None and re.match(self.pattern, part.get_filename(), re.IGNORECASE)
 
     def check(self):
@@ -84,6 +83,7 @@ class Filter:
 
         return self._is_mail_ok
 
+
 @click.command()
 @click.option('--uploads-to', type=click.Path(), default='zalaczniki')
 @click.option('--search', help='Patter no search in ...')
@@ -92,7 +92,7 @@ class Filter:
 def main(uploads_to, search, search_in_content, search_in_attachment_name):
     os.makedirs(uploads_to, exist_ok=True)
 
-    filter = Filter(search, search_in_content, search_in_attachment_name)
+    choice = Filter(search, search_in_content, search_in_attachment_name)
 
     with open('cfg.yaml', 'r') as file:
         credentials = yaml.safe_load(file)
@@ -101,24 +101,13 @@ def main(uploads_to, search, search_in_content, search_in_attachment_name):
             mailbox = MailBox(**credential)
             mailbox.connect()
 
-            for email in mailbox.get_emails():
-                filter.email = email
+            for e_mail in mailbox.get_emails():
+                choice.email = e_mail
 
-                if filter.check():
-                    print(credential['login'], email.subject)
-
-                #     if search_in_attachment_name:
-                #         if part.get_filename() is not None and re.match(search, part.get_filename(), re.IGNORECASE):
-                #             is_mail_ok = True
-                #             with open(os.path.join(uploads_to, part.get_filename()), 'wb') as file:
-                #                 file.write(part.get_payload(decode=True))
-                #
-                #     if search_in_content:
-                #         if re.search(search, part.as_string(), re.IGNORECASE):
-                #             is_mail_ok = True
-                #
-                # if is_mail_ok:
-                #     print(credential['login'], email.subject)
+                if choice.check():
+                    with open(os.path.join(uploads_to, part.get_filename()), 'wb') as f:
+                        f.write(part.get_payload(decode=True))
+                        print(credential['login'], e_mail.subject)
 
 
 if __name__ == '__main__':

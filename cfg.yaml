@@ -1,4 +1,4 @@
 mails:
-  - login:
-    password :
-    server:
+  - login: 'yourmail@gmail.com'
+    password : 'yourpassword'
+    server: 'imap.gmail.com'

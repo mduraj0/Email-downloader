@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a72d2235-4a92-48e7-aec0-d0bf926fe8ba" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/cfg.yaml" afterDir="false" />
+    <list default="true" id="a72d2235-4a92-48e7-aec0-d0bf926fe8ba" name="Changes" comment="Initial commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cfg.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/cfg.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
