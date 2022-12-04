@@ -1,10 +1,10 @@
-import imaplib
+import click
 import email
 from email.header import decode_header
-import yaml
+import imaplib
 import os
-import click
 import re
+import yaml
 
 
 class Mail:
